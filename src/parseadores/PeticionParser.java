@@ -1,16 +1,14 @@
 package parseadores;
 
-import builders.OperacionBuilder;
-import dto.Operacion;
+import builders.PeticionBuilder;
+import dto.Peticion;
 import interfaces.BaseParser;
 
-import java.util.HashMap;
-
-public class OperacionParser implements BaseParser<Operacion> {
+public class PeticionParser implements BaseParser<Peticion> {
 
     @Override
-    public Operacion leerCadena(String cadena) {
-        OperacionBuilder builder = new OperacionBuilder();
+    public Peticion leerCadena(String cadena) {
+        PeticionBuilder builder = new PeticionBuilder();
 
         // Análisis de servicio y acción
         String[] segmentos = cadena.split(" ");
