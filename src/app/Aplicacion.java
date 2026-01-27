@@ -3,7 +3,7 @@ package app;
 import dto.Peticion;
 import interfaces.BaseParser;
 import interfaces.Servicio;
-import parseadores.OperacionParser;
+import parseadores.PeticionParser;
 
 public class Aplicacion {
     private ServiceLocator servicios;
@@ -11,7 +11,7 @@ public class Aplicacion {
 
     public Aplicacion(ServiceLocator servicios) {
         this.servicios = servicios;
-        this.lector = new OperacionParser();
+        this.lector = new PeticionParser();
     }
 
     public void iniciar() {
