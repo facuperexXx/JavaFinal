@@ -8,7 +8,6 @@ import java.util.HashMap;
 
 public class UsuariosServicio implements Servicio<Peticion, Respuesta> {
 
-
     @Override
     public Respuesta ejecutar(Peticion peticion) {
         switch (peticion.getAccion()) {
@@ -19,9 +18,7 @@ public class UsuariosServicio implements Servicio<Peticion, Respuesta> {
     }
 
     private Respuesta loguearse(HashMap<String, String> parametros) {
-
-
-
+        
         System.out.println("Servicio usuarios");
         return new Respuesta();
     }

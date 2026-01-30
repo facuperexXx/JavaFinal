@@ -5,8 +5,15 @@ import models.Usuario;
 
 public class UsuarioContenedor extends BaseContenedor<Usuario> {
 
-    public UsuarioContenedor() {
+    private static UsuarioContenedor singleton;
+
+    private UsuarioContenedor() {
         listado = UsuarioData.cargaUsuarios();
+    }
+
+    public static UsuarioContenedor getInstance() {
+        if (singleton == null) return new UsuarioContenedor();
+        else return singleton;
     }
 
     @Override
