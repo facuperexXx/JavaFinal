@@ -17,7 +17,7 @@ public class Aplicacion {
 
     public void iniciar() {
 
-        Peticion op = lector.leerCadena("usuarios buscar id=2");
+        Peticion op = lector.leerCadena("usuarios todos");
 
         Servicio servicio = servicios.buscarServicio(op.getServicio());
 

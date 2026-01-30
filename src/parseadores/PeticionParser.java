@@ -15,11 +15,15 @@ public class PeticionParser implements BaseParser<Peticion> {
         builder.setServicio(segmentos[0]);
         builder.setAccion(segmentos[1]);
 
-        // Análisis de parámetros
-        String[] allParams = segmentos[2].split(",");
-        for (String p : allParams) {
-            String[] param = p.split("=");
-            builder.setParametro(param[0], param[1]);
+        try {
+            // Análisis de parámetros
+            String[] allParams = segmentos[2].split(",");
+            for (String p : allParams) {
+                String[] param = p.split("=");
+                builder.setParametro(param[0], param[1]);
+            }
+        } catch (Exception e) {
+
         }
 
         return builder.build();

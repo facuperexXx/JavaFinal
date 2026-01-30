@@ -22,6 +22,7 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
     public Respuesta ejecutar(Peticion peticion) {
         switch (peticion.getAccion()) {
             case "buscar": return this.buscarPorId(peticion.getParametros());
+            case "todos": return this.todosLosUsuarios();
 
             default: throw new RuntimeException("Accion no disponible");
         }
@@ -33,9 +34,22 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
 
         Usuario buscado = data.buscar(idBuscado);
 
-
         String estado = "Ok";
         String mensaje = buscado.toString();
+
+        return new Respuesta(accion, estado, mensaje);
+    }
+
+    private Respuesta todosLosUsuarios() {
+        String accion = "Ver todos los usuarios";
+
+        List<Usuario> listado = data.allRegistros();
+
+        String estado = "Ok";
+        String mensaje = "";
+        for(Usuario r : listado) {
+            mensaje += r.toString() + "\n";
+        }
 
         return new Respuesta(accion, estado, mensaje);
     }

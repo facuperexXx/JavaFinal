@@ -31,5 +31,4 @@ public class PeticionBuilder {
     public Peticion build() {
         return new Peticion(servicio, accion, parametros);
     }
-
 }
