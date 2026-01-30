@@ -55,4 +55,9 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario [ " + id + " - " + nombre + " - Usuario: " + user + " - Pass: " + pass + " - Perfil: " + perfil + " ] ";
+    }
 }

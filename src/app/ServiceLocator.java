@@ -6,6 +6,7 @@ import interfaces.Servicio;
 
 import java.util.HashMap;
 
+// Registra - entrega servicios
 public class ServiceLocator {
     private HashMap<String, Servicio> listadoServicios;
 

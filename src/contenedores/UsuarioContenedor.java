@@ -28,6 +28,4 @@ public class UsuarioContenedor extends BaseContenedor<Usuario> {
         registro.setPass(datosNuevos.getPass());
         registro.setPerfil(datosNuevos.getPerfil());
     }
-
-
 }

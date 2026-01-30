@@ -1,6 +1,7 @@
 package app;
 
 import dto.Peticion;
+import dto.Respuesta;
 import interfaces.BaseParser;
 import interfaces.Servicio;
 import parseadores.PeticionParser;
@@ -16,10 +17,12 @@ public class Aplicacion {
 
     public void iniciar() {
 
-        Peticion op = lector.leerCadena("usuarios login user=facu,pass=1234");
+        Peticion op = lector.leerCadena("usuarios buscar id=2");
 
         Servicio servicio = servicios.buscarServicio(op.getServicio());
 
-        servicio.ejecutar(op);
+        Respuesta resultado = (Respuesta) servicio.ejecutar(op);
+
+        System.out.println(resultado.toString());
     }
 }
