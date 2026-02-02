@@ -23,6 +23,7 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
         switch (peticion.getAccion()) {
             case "buscar": return this.buscarPorId(peticion.getParametros());
             case "todos": return this.todosLosUsuarios();
+            case "eliminar": return this.eliminarPorId(peticion.getParametros());
 
             default: throw new RuntimeException("Accion no disponible");
         }
@@ -47,6 +48,23 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
 
         String estado = "Ok";
         String mensaje = "";
+        for(Usuario r : listado) {
+            mensaje += r.toString() + "\n";
+        }
+
+        return new Respuesta(accion, estado, mensaje);
+    }
+
+    private Respuesta eliminarPorId(HashMap<String, String> parametros) {
+        String accion = "Eliminación de registro por id";
+        int idBuscado = Integer.parseInt(parametros.get("id"));
+
+        data.eliminar(idBuscado);
+
+        String estado = "Ok";
+        String mensaje = "";
+
+        List<Usuario> listado = data.allRegistros();
         for(Usuario r : listado) {
             mensaje += r.toString() + "\n";
         }
