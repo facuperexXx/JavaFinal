@@ -1,5 +1,6 @@
 package servicios;
 
+import builders.UsuarioBuilder;
 import contenedores.BaseContenedor;
 import contenedores.UsuarioContenedor;
 import dto.Peticion;
@@ -24,9 +25,29 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
             case "buscar": return this.buscarPorId(peticion.getParametros());
             case "todos": return this.todosLosUsuarios();
             case "eliminar": return this.eliminarPorId(peticion.getParametros());
+            case "agregarUsuario": return this.agregarUsuario(peticion.getParametros());
 
             default: throw new RuntimeException("Accion no disponible");
         }
+    }
+
+    private Respuesta agregarUsuario(HashMap<String, String> parametros) {
+        String accion = "Agregar usuario";
+
+        Usuario nuevo = new UsuarioBuilder()
+                .setNombre(parametros.get("nombre"))
+                .setUser(parametros.get("user"))
+                .setPass(parametros.get("pass"))
+                .setPerfil(Integer.parseInt(parametros.get("perfil")))
+                .build();
+        data.agregar(nuevo);
+
+        String estado = "Ok";
+
+        Usuario buscado = data.buscar(nuevo.getId());
+        String mensaje = buscado.toString();
+
+        return new Respuesta(accion, estado, mensaje);
     }
 
     private Respuesta buscarPorId(HashMap<String, String> parametros) {
@@ -49,7 +70,7 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
         String estado = "Ok";
         String mensaje = "";
         for(Usuario r : listado) {
-            mensaje += r.toString() + "\n";
+            mensaje += "\n" + r.toString();
         }
 
         return new Respuesta(accion, estado, mensaje);
@@ -66,7 +87,7 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
 
         List<Usuario> listado = data.allRegistros();
         for(Usuario r : listado) {
-            mensaje += r.toString() + "\n";
+            mensaje += "\n" + r.toString();
         }
 
         return new Respuesta(accion, estado, mensaje);

@@ -24,7 +24,7 @@ public abstract class BaseContenedor<T> {
     }
 
     public void agregar(T item) {
-        if(verificarExistencia(datoClave(item)) != null) {
+        if(verificarExistencia(datoClave(item)) == null) {
             listado.add(item);
         }
     }
