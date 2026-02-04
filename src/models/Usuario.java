@@ -6,6 +6,7 @@ public class Usuario {
     private String user;
     private String pass;
     private String perfil = "Cliente";
+    private int saldo = 0;
 
     public Usuario() { }
 
@@ -39,6 +40,10 @@ public class Usuario {
         return id;
     }
 
+    public int getSaldo() {
+        return this.saldo;
+    }
+
     // SETTERS
     public void setPerfil(String perfil) {
         this.perfil = perfil;
@@ -56,8 +61,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+
     @Override
     public String toString() {
-        return "Usuario [ " + id + " - " + nombre + " - Usuario: " + user + " - Pass: " + pass + " - Perfil: " + perfil + " ] ";
+        return "Usuario [ " + id + " - " + nombre + " - Usuario: " + user + " - Pass: " + pass + " - Perfil: " + perfil + " - Saldo: $" + saldo + " ] ";
     }
 }
