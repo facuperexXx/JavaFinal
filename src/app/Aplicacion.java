@@ -17,12 +17,10 @@ public class Aplicacion {
 
     public void iniciar() {
 
-        Peticion op = lector.leerCadena("usuarios todos");
+        Peticion op = lector.leerCadena("auth logout");
 
         Servicio servicio = servicios.buscarServicio(op.getServicio());
 
         Respuesta resultado = (Respuesta) servicio.ejecutar(op);
-
-        System.out.println(resultado.toString());
     }
 }
