@@ -17,7 +17,7 @@ public class Aplicacion {
 
     public void iniciar() {
 
-        Peticion op = lector.leerCadena("saldo transf idOrigen=1,idDestino=2,monto=2");
+        Peticion op = lector.leerCadena("stock todos");
 
         Servicio servicio = servicios.buscarServicio(op.getServicio());
 
