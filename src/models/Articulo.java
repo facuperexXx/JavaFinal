@@ -8,6 +8,12 @@ public class Articulo {
 
     public Articulo() {}
 
+    public Articulo(String nombre, int precio, int stock) {
+        this.stock = stock;
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+
     public Articulo(int codigo, String nombre, int precio) {
         this.codigo = codigo;
         this.nombre = nombre;
@@ -46,6 +52,6 @@ public class Articulo {
 
     @Override
     public String toString() {
-        return "Articulo [ " + codigo + " - " + nombre + " - Precio: $" + precio + " ]";
+        return "Articulo [ " + codigo + " - " + nombre + " - Precio: $" + precio + " - Stock: " + stock + " ]";
     }
 }
