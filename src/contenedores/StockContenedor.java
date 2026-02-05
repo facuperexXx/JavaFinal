@@ -23,8 +23,8 @@ public class StockContenedor extends BaseContenedor<Articulo>{
 
     @Override
     protected void modificarRegistro(Articulo registro, Articulo datosNuevos) {
-        registro.setNombre(datosNuevos.getNombre());
-        registro.setCantidad(datosNuevos.getCantidad());
-        registro.setPrecio(datosNuevos.getPrecio());
+        if(datosNuevos.getNombre() != null) registro.setNombre(datosNuevos.getNombre());
+        if(datosNuevos.getCantidad() != 0) registro.setCantidad(datosNuevos.getCantidad());
+        if(datosNuevos.getPrecio() != 0) registro.setPrecio(datosNuevos.getPrecio());
     }
 }
