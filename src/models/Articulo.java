@@ -8,17 +8,13 @@ public class Articulo {
 
     public Articulo() {}
 
-    public Articulo(int codigo, String nombre, int precio, int stock) {
+    public Articulo(int codigo, String nombre, int precio) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
-        this.stock = stock;
     }
 
-    public int getStock() {
-        return stock;
-    }
-
+    // GETTERS
     public int getPrecio() {
         return precio;
     }
@@ -27,10 +23,15 @@ public class Articulo {
         return nombre;
     }
 
+    public int getCantidad() {
+        return stock;
+    }
+
     public int getCodigo() {
         return codigo;
     }
 
+    // SETTERS
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -39,12 +40,12 @@ public class Articulo {
         this.precio = precio;
     }
 
-    public void setStock(int stock) {
+    public void setCantidad(int stock) {
         this.stock = stock;
     }
 
     @Override
     public String toString() {
-        return "Articulo [ " + codigo + " - " + nombre + " - Precio: $" + precio + " - Stock: " + stock + " ]";
+        return "Articulo [ " + codigo + " - " + nombre + " - Precio: $" + precio + " ]";
     }
 }
