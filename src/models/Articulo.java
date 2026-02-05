@@ -1,14 +1,14 @@
 package models;
 
 public class Articulo {
-    private String codigo;
+    private int codigo;
     private String nombre;
     private int precio;
     private int stock;
 
     public Articulo() {}
 
-    public Articulo(String codigo, String nombre, int precio, int stock) {
+    public Articulo(int codigo, String nombre, int precio, int stock) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
@@ -27,7 +27,7 @@ public class Articulo {
         return nombre;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
