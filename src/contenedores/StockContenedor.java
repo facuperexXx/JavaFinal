@@ -1,10 +1,15 @@
 package contenedores;
 
+import data.StockData;
 import models.Articulo;
 
 public class StockContenedor extends BaseContenedor<Articulo>{
 
     private static StockContenedor singleton;
+
+    private StockContenedor() {
+        listado = StockData.cargarArticulos();
+    }
 
     public static StockContenedor getInstance() {
         if(singleton == null) return new StockContenedor();
