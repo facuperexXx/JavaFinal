@@ -8,6 +8,7 @@ import interfaces.Servicio;
 import models.Articulo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class StockServicio implements Servicio<Peticion, Respuesta> {
@@ -22,13 +23,31 @@ public class StockServicio implements Servicio<Peticion, Respuesta> {
         switch (peticion.getAccion()) {
             case "todos": return this.todoStock();
             case "agregar": return null;
-            case "eliminar": return null;
+            case "eliminar": return this.eliminarStock(peticion.getParametros());
             case "definirStock": return null;
             case "buscarXid": return null;
             case "buscarXnombre": return null;
 
             default: throw new RuntimeException("Accion no disponible");
         }
+    }
+
+    private Respuesta eliminarStock(HashMap<String, String> parametros) {
+        String accion = "Eliminar stock";
+
+        int idBuscado = Integer.parseInt(parametros.get("id"));
+
+        dataStock.eliminar(idBuscado);
+
+        String estado = "Ok";
+        String mensaje = "";
+
+        List<Articulo> listado = dataStock.allRegistros();
+        for(Articulo a : listado) {
+            mensaje += "\n" + a.toString();
+        }
+
+        return new Respuesta(accion, estado, mensaje);
     }
 
     private Respuesta todoStock() {
