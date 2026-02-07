@@ -1,5 +1,6 @@
 package servicios;
 
+import builders.ArticuloBuilder;
 import contenedores.BaseContenedor;
 import contenedores.StockContenedor;
 import dto.Peticion;
@@ -22,7 +23,7 @@ public class StockServicio implements Servicio<Peticion, Respuesta> {
     public Respuesta ejecutar(Peticion peticion) {
         switch (peticion.getAccion()) {
             case "todos": return this.todoStock();
-            case "agregar": return null;
+            case "agregar": return this.agregarArticulo(peticion.getParametros());
             case "eliminar": return this.eliminarStock(peticion.getParametros());
             case "stockear": return this.stockear(peticion.getParametros());
             case "buscarXid": return this.buscarXid(peticion.getParametros());
@@ -30,6 +31,26 @@ public class StockServicio implements Servicio<Peticion, Respuesta> {
 
             default: throw new RuntimeException("Accion no disponible");
         }
+    }
+
+    private Respuesta agregarArticulo(HashMap<String, String> parametros) {
+        String accion = "Agregar articulo";
+        String estado = "Ok";
+
+        String nombre = parametros.get("nombre");
+        int precio = Integer.parseInt(parametros.get("precio"));
+
+        Articulo nuevo = new ArticuloBuilder()
+                .setNombre(nombre)
+                .setPrecio(precio)
+                .build();
+
+        dataStock.agregar(nuevo);
+        Articulo registro = dataStock.buscar(nuevo.getCodigo());
+
+        String mensaje = registro.toString();
+
+        return new Respuesta(accion, estado, mensaje);
     }
 
     private Respuesta stockear(HashMap<String, String> parametros) {

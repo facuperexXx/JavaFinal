@@ -20,7 +20,7 @@ public class inicio {
 
         ServiceLocator servicios = new ServiceLocator();
         servicios.registrarServicio("auth", new AutenticacionServicio());
-        servicios.registrarServicio("usuario" , new UsuarioServicio());
+        servicios.registrarServicio("usuario", new UsuarioServicio());
         servicios.registrarServicio("saldo", new SaldoServicio());
         servicios.registrarServicio("stock", new StockServicio());
 
