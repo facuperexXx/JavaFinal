@@ -23,9 +23,9 @@ public class UsuarioContenedor extends BaseContenedor<Usuario> {
 
     @Override
     protected void modificarRegistro(Usuario registro, Usuario datosNuevos) {
-        registro.setNombre(datosNuevos.getNombre());
-        registro.setUser(datosNuevos.getUser());
-        registro.setPass(datosNuevos.getPass());
-        registro.setPerfil(datosNuevos.getPerfil());
+        if(datosNuevos.getNombre() != null) registro.setNombre(datosNuevos.getNombre());
+        if(datosNuevos.getUser() != null) registro.setUser(datosNuevos.getUser());
+        if(datosNuevos.getPass() != null) registro.setPass(datosNuevos.getPass());
+        if(datosNuevos.getPerfil() != null) registro.setPerfil(datosNuevos.getPerfil());
     }
 }

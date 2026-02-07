@@ -46,7 +46,8 @@ public class Usuario {
 
     // SETTERS
     public void setPerfil(String perfil) {
-        this.perfil = perfil;
+        if(perfil == "1") this.perfil = "Empleado";
+        if(perfil == "2") this.perfil = "Cliente";
     }
 
     public void setPass(String pass) {

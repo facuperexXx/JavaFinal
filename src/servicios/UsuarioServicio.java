@@ -26,9 +26,29 @@ public class UsuarioServicio implements Servicio<Peticion, Respuesta> {
             case "todos": return this.todosLosUsuarios();
             case "eliminar": return this.eliminarPorId(peticion.getParametros());
             case "agregarUsuario": return this.agregarUsuario(peticion.getParametros());
+            case "modificar": return this.modificarUsuario(peticion.getParametros());
 
             default: throw new RuntimeException("Accion no disponible");
         }
+    }
+
+    private Respuesta modificarUsuario(HashMap<String, String> parametros) {
+        String accion = "Modicicacion de usuario";
+        int id = Integer.parseInt(parametros.get("id"));
+
+        Usuario datosNuevos = new Usuario();
+
+        datosNuevos.setNombre(parametros.get("nombre"));
+        datosNuevos.setUser(parametros.get("user"));
+        datosNuevos.setPerfil(parametros.get("perfil"));
+        datosNuevos.setPass(parametros.get("pass"));
+
+        Usuario usActualizado = data.modificar(id, datosNuevos);
+
+        String estado = "Ok";
+        String mensaje = usActualizado.toString();
+
+        return new Respuesta(accion, estado, mensaje);
     }
 
     private Respuesta agregarUsuario(HashMap<String, String> parametros) {

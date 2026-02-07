@@ -12,6 +12,11 @@ public class StockData {
         Articulo a3 = new Articulo(3, "Fideos", 3);
         Articulo a4 = new Articulo(4, "Guiso", 7);
 
+        a1.setCantidad(4);
+        a2.setCantidad(6);
+        a3.setCantidad(3);
+        a4.setCantidad(9);
+
         List<Articulo> listado = new ArrayList<>();
 
         listado.add(a1);
