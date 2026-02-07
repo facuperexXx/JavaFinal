@@ -17,7 +17,7 @@ public class Aplicacion {
 
     public void iniciar() {
 
-        Peticion op = lector.leerCadena("stock eliminar id=1");
+        Peticion op = lector.leerCadena("stock buscarXnombre nombre=oreo");
 
         Servicio servicio = servicios.buscarServicio(op.getServicio());
 
