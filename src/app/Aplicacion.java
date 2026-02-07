@@ -17,7 +17,7 @@ public class Aplicacion {
 
     public void iniciar() {
 
-        Peticion op = lector.leerCadena("stock buscarXnombre nombre=oreo");
+        Peticion op = lector.leerCadena("stock stockear id=3,stock=9");
 
         Servicio servicio = servicios.buscarServicio(op.getServicio());
 

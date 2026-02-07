@@ -24,12 +24,28 @@ public class StockServicio implements Servicio<Peticion, Respuesta> {
             case "todos": return this.todoStock();
             case "agregar": return null;
             case "eliminar": return this.eliminarStock(peticion.getParametros());
-            case "definirStock": return null;
+            case "stockear": return this.stockear(peticion.getParametros());
             case "buscarXid": return this.buscarXid(peticion.getParametros());
             case "buscarXnombre": return this.buscarXnombre(peticion.getParametros());
 
             default: throw new RuntimeException("Accion no disponible");
         }
+    }
+
+    private Respuesta stockear(HashMap<String, String> parametros) {
+        String accion = "Actualizar stock";
+        String estado = "Ok";
+
+        int id = Integer.parseInt(parametros.get("id"));
+        int stock = Integer.parseInt(parametros.get("stock"));
+
+        Articulo articuloBuscado = dataStock.buscar(id);
+
+        articuloBuscado.setCantidad(stock);
+
+        String mensaje = articuloBuscado.toString();
+
+        return new Respuesta(accion, estado, mensaje);
     }
 
     private Respuesta buscarXnombre(HashMap<String, String> parametros) {
